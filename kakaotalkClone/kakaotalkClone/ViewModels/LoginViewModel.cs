@@ -10,8 +10,20 @@ namespace kakaotalkClone.ViewModels
 {
 		internal class LoginViewModel : INotifyPropertyChanged
 		{
+			private double opacity = 1;
 
-				private Visibility visible;
+			public double Opacity
+			{
+				get => opacity;
+				set
+				{
+					opacity = value;
+					NotifyPropertyChanged(nameof(opacity));
+				}
+			}
+
+
+			private Visibility visible;
 
 				public Visibility Visible
 				{
@@ -68,8 +80,9 @@ namespace kakaotalkClone.ViewModels
 						MessageBox.Show ("로그인");
 						MainWindow mainWindow = new MainWindow ();
 						mainWindow.Show ();
-						Visible = Visibility.Collapsed;
-				}
+						Opacity = 0;
+
+                }
 
 				public event PropertyChangedEventHandler? PropertyChanged;
 				private void NotifyPropertyChanged([CallerMemberName] String propertyname = "")
